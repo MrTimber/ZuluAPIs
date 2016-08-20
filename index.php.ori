@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <!-- En-tête de la page -->
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Zulutrade API test</title>
+    </head>
+
+    <body>
+        <h1>Zulutrade API test</h1>
+    
+        <?php
+        include('./ZuluForexClient.php');
+        include('./ZuluBOsClient.php');
+
+        $zuluForexClient = new ZuluForexClient('forex_trader_account_login', 'forex_trader_account_password');
+        $zuluBOsClient = new ZuluBOsClient('binary_options_trader_account_login', 'binary_options_trader_password');
+        
+        // Returns the available assets the user can trade
+        echo "<p class='test'>";
+        echo "<strong>getProviderStatistics</strong> : <em>Returns the available assets the user can trade</em><br>";
+        $response = $zuluForexClient->getProviderStatistics();
+        echo $response;
+        echo "</p>";
+         
+        // Returns the account's balance
+        echo "<p class='test'>";
+        echo "<strong>getTradingConfiguration</strong> : <em>Returns the account's balance</em><br>";
+        $response = $zuluForexClient->getTradingConfiguration();
+        echo $response;
+        echo "</p>";
+         
+        // Gets the provider's performance page statistics, if the user is a provider
+        echo "<p class='test'>";
+        echo "<strong>requestAssets</strong> : <em>Gets the provider's performance page statistics, if the user is a provider</em><br>";
+        $response = $zuluBOsClient->requestAssets();
+        echo $response;
+        echo "</p>";
+         
+        // Gets the minimum amount and minimum amount step available for trading of a user
+        echo "<p class='test'>";
+        echo "<strong>requestBalance</strong> : <em>Gets the minimum amount and minimum amount step available for trading of a user</em><br>";
+        $response = $zuluBOsClient->requestBalance();
+        echo $response;
+        echo "</p>";
+        ?>
+    </body>
+
+</html>
