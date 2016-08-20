@@ -12,3 +12,5 @@ There is a `index.php.ori` file in the root folder. Copy it to `index.php`, and 
     $zuluBOsClient = new ZuluBOsClient('binary_options_trader_account_login', 'binary_options_trader_password');
     
 *The `.gitignore` file is setted to git ignore the index.php file, so you're login and password informations won't be be added to your commits.*
+
+> Note : This implementation of a REST API use [Guzzle](https://github.com/guzzle/guzzle) for requests management.
